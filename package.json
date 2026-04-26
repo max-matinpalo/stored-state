@@ -1,13 +1,13 @@
 {
 	"name": "stored-state",
-	"version": "0.0.1",
+	"version": "0.1.1",
 	"description": "Simple persistent state: cached in memory, synced to localStorage",
 	"author": "max matinpalo",
 	"type": "module",
 	"license": "MIT",
 	"main": "stored-state.js",
 	"exports": {
-		".": "./useRefresh.js",
+		".": "./stored-state.js",
 		"./global": "./global.js"
 	},
 	"repository": {
