@@ -1,0 +1,24 @@
+{
+	"name": "stored-state",
+	"version": "0.0.1",
+	"description": "Simple persistent state: cached in memory, synced to localStorage",
+	"author": "max matinpalo",
+	"type": "module",
+	"license": "MIT",
+	"main": "stored-state.js",
+	"exports": {
+		".": "./useRefresh.js",
+		"./global": "./global.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/max-matinpalo/stored-state.git"
+	},
+	"bugs": {
+		"url": "https://github.com/max-matinpalo/stored-state/issues"
+	},
+	"homepage": "https://github.com/max-matinpalo/stored-state#readme",
+	"keywords": [
+		"react"
+	]
+}
