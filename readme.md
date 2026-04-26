@@ -29,11 +29,10 @@ npm install stored-state
 
 ## Advantages
 - Very simple: `state.name = value`
-- Works like a plain object
 - Lazy-loaded from localStorage
 - Values cached in memory after first access
 - No provider, no context, no setup
-- Tiny: ~350 bytes min+gzip
+- Tiny: ~500 bytes min+gzip
 - Zero dependencies
 
 

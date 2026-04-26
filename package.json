@@ -1,7 +1,7 @@
 {
 	"name": "stored-state",
-	"version": "0.1.1",
-	"description": "Simple persistent state: cached in memory, synced to localStorage",
+	"version": "0.2.2",
+	"description": "Simplest persistent state for browser apps",
 	"author": "max matinpalo",
 	"type": "module",
 	"license": "MIT",
@@ -19,6 +19,14 @@
 	},
 	"homepage": "https://github.com/max-matinpalo/stored-state#readme",
 	"keywords": [
-		"react"
+		"react",
+		"vue",
+		"svelte",
+		"vanilla-js",
+		"state",
+		"persistent-state",
+		"localStorage",
+		"storage",
+		"browser-storage"
 	]
 }
