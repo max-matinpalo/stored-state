@@ -2,7 +2,6 @@
 [![npm version](https://img.shields.io/npm/v/stored-state)](https://www.npmjs.com/package/stored-state)
 [![license](https://img.shields.io/github/license/max-matinpalo/stored-state?v=1)](https://github.com/max-matinpalo/stored-state/blob/main/LICENSE)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/stored-state?v=1)](https://bundlephobia.com/package/stored-state)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/stored-state)](https://socket.dev/npm/package/stored-state)
 
 **Simplest persistent state for browser apps**  
 - Values are cached in memory and synced to localStorage
@@ -17,15 +16,15 @@ state.token = "123";
 ```
 
 State can be accessed and modified anywhere in your app.  
-All writes auto sync to localStorage.
+Updates auto sync to localStorage.  
+Values can be any primitives, objects or arrays.  
+‼️ Allways assign top level keys. Don't do state.user.address = ... 
 
 
-## install
+## Install
 ```bash
 npm install stored-state
 ```
-
-
 
 
 ## Advantages
@@ -33,7 +32,7 @@ npm install stored-state
 - Lazy-loaded from localStorage
 - Values cached in memory after first access
 - No provider, no context, no setup
-- Small: ~650 bytes min+gzip
+- Small: ~750 bytes min+gzip
 - Zero dependencies
 
 
@@ -41,8 +40,8 @@ npm install stored-state
 MIT
 
 
-### Hint for rebels 🙂
-If you don't want manually import { state } from "stored-state" many times,  
+### Hint for rebels
+If you don't want manually `import { state } from "stored-state"` many times,  
 you can just add this import at app start. 
 ```JS
 import "stored-state/global"
