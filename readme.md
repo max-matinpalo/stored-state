@@ -2,6 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/stored-state)](https://www.npmjs.com/package/stored-state)
 [![license](https://img.shields.io/github/license/max-matinpalo/stored-state)](https://github.com/max-matinpalo/stored-state/blob/main/LICENSE)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/stored-state)](https://bundlephobia.com/package/stored-state)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/stored-state)](https://socket.dev/npm/package/stored-state)
 
 **Simplest persistent state for browser apps**  
 - Values are cached in memory and synced to localStorage
@@ -20,7 +21,6 @@ All writes auto sync to localStorage.
 
 
 ## install
-Package size only ~250 bytes min+gzip
 ```bash
 npm install stored-state
 ```
@@ -32,7 +32,7 @@ npm install stored-state
 - Lazy-loaded from localStorage
 - Values cached in memory after first access
 - No provider, no context, no setup
-- Tiny: ~500 bytes min+gzip
+- Small: ~650 bytes min+gzip
 - Zero dependencies
 
 
