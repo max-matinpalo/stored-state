@@ -7,9 +7,7 @@ const storage = (() => {
 })();
 
 function readStorage(key) {
-	// Ensure null return for SSR/missing storage
 	if (!storage) return null;
-
 	try { return storage.getItem(PREFIX + key); }
 	catch { return null; }
 }
@@ -29,11 +27,20 @@ function parse(val) {
 	catch { return val; }
 }
 
+function clear() {
+	for (const k in mem) delete mem[k];
+	Object.keys(storage || {}).forEach(k => {
+		if (k.startsWith(PREFIX)) storage.removeItem(k);
+	});
+}
+
+/** @type {Record<string, any>} */
 export const state = new Proxy({}, {
 	get: function (target, key) {
 		// 1. Return if symbol or cached
 		if (typeof key === "symbol") return target[key];
 		if (key in mem) return mem[key];
+		if (key === "clear") return clear;
 
 		// 2. Fetch from storage
 		const raw = readStorage(key);
@@ -45,8 +52,7 @@ export const state = new Proxy({}, {
 	},
 
 	set: function (target, key, val) {
-		// 1. Remove if undefined
-		if (val === undefined) {
+		if (val == null) {
 			delete mem[key];
 			removeStorage(key);
 			return true;
@@ -74,13 +80,7 @@ export const state = new Proxy({}, {
 		return true;
 	},
 
-	has: function (target, key) {
-		if (typeof key === "symbol") return key in target;
-		if (key in mem) return true;
-		return readStorage(key) !== null;
-	},
-
-	// ownKeys and getOwnPropertyDescriptor allow Object.keys(), JSON.stringify(), 
+	// ownKeys and getOwnPropertyDescriptor allow Object.keys(), JSON.stringify(), console.log(state)
 	// and the spread operator to see both cached and persistent keys.
 	ownKeys: function (target) {
 		// 1. Collect memory keys
@@ -97,10 +97,8 @@ export const state = new Proxy({}, {
 	},
 
 	getOwnPropertyDescriptor: function (target, key) {
-		// 1. Validate existence
 		if (typeof key === "symbol") return undefined;
 		if (!(key in mem) && readStorage(key) === null) return undefined;
-
 		return { enumerable: true, configurable: true };
 	}
 });

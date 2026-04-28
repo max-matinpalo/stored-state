@@ -4,9 +4,8 @@
 [![bundle size](https://img.shields.io/bundlephobia/minzip/stored-state?v=1)](https://bundlephobia.com/package/stored-state)
 
 **Simplest persistent state for browser apps**  
-- Values are cached in memory and synced to localStorage
-- Reads stay fast and data survive reloads
-- Looks like a normal object
+- State cached in memory and synced to localStorage
+- Fast reads and state survive reloads
 - Zero setup
 
 ```js
@@ -15,15 +14,45 @@ state.user = { name: "peter" };
 state.token = "123";
 ```
 
-State can be accessed and modified anywhere in your app.  
-Updates auto sync to localStorage.  
-Values can be any primitives, objects or arrays.  
-‼️ Allways assign top level keys. Don't do state.user.address = ... 
-
-
 ## Install
 ```bash
 npm install stored-state
+```
+
+### Update State
+Update state by assignment. Values can be any primitives, objects or arrays. 
+Always assign top level keys, not nested fields
+
+```js
+import { state } from "stored-state";
+state.theme = "dark";
+state.layout = {
+	lastViewed: "analytics"...
+};
+
+// NOT do
+state.user.lastViewed = ... 
+```
+
+### Read state
+Read state like a normal object.
+State can be accessed and modified anywhere in your app.
+```js
+import { state } from "stored-state";
+
+console.log(state);
+if (state.theme === "dark") ...
+```
+
+### Clear State
+Clear single value
+```js
+delete state.theme;
+state.theme = null;
+```
+Clear whole state
+```js
+state.clear();
 ```
 
 
