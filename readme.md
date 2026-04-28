@@ -1,17 +1,17 @@
 # stored-state
 [![npm version](https://img.shields.io/npm/v/stored-state)](https://www.npmjs.com/package/stored-state)
 [![license](https://img.shields.io/github/license/max-matinpalo/stored-state?v=1)](https://github.com/max-matinpalo/stored-state/blob/main/LICENSE)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/stored-state?v=1)](https://bundlephobia.com/package/stored-state)
 
 **Simplest persistent state for browser apps**  
 - State cached in memory and synced to localStorage
 - Fast reads and state survive reloads
-- Zero setup
+- Zero setup, zero dependencies
 
 ```js
 import { state } from "stored-state";
 state.user = { name: "peter" };
-state.token = "123";
+state.token = "1234";
+state.theme = "dark";
 ```
 
 ## Install
@@ -21,7 +21,7 @@ npm install stored-state
 
 ### Update State
 Update state by assignment. Values can be any primitives, objects or arrays. 
-Always assign top level keys, not nested fields
+Always assign top level keys, not nested fields.
 
 ```js
 import { state } from "stored-state";
@@ -45,7 +45,7 @@ if (state.theme === "dark") ...
 ```
 
 ### Clear State
-Clear single value
+Clear single value. Two options:
 ```js
 delete state.theme;
 state.theme = null;
@@ -57,19 +57,17 @@ state.clear();
 
 
 ## Advantages
-- Very simple: `state.name = value`
-- Lazy-loaded from localStorage
-- Values cached in memory after first access
-- No provider, no context, no setup
-- Small: ~750 bytes min+gzip
-- Zero dependencies
+- **Simple:** `state.name = value`
+- **Fast:** values cached in memory after first access
+- **Small:** ~750 bytes min+gzip
+- Zero setup, zero dependencies
 
 
 ## License
 MIT
 
 
-### Hint for rebels
+#### Hint
 If you don't want manually `import { state } from "stored-state"` many times,  
 you can just add this import at app start. 
 ```JS

@@ -1,6 +1,6 @@
 {
 	"name": "stored-state",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Simplest persistent state for browser apps",
 	"author": "max matinpalo",
 	"type": "module",
